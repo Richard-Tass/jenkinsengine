@@ -11,14 +11,14 @@ pipeline{
 				sh 'df -h'
 			}
 		}
-		stage('3-real time Linux processes'){
+		stage('3-volumeCheck'){
 			steps{
-				sh 'top'
+				sh 'lsblk'
 			}
 		}
-		stage('4-cpu analysis'){
+		stage('4-memoryCheck'){
 			steps{
-				sh 'lscpu'
+				sh 'free -m'
 			}
 		}
 		
