@@ -20,7 +20,12 @@ pipeline{
 			steps{
 				sh 'free -m'
 			}
-		}
+		}stage('5-securityCheck'){
+            steps{
+                sh 'bash -x/var/lib/jenkins/workspace/pipeline-system analysis/security.sh
+'
+            }
+        }
 		
 	}
 }
