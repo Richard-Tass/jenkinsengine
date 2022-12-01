@@ -16,7 +16,7 @@ pipeline{
 				sh 'top'
 			}
 		}
-		stage('cpu analysis'){
+		stage('4-cpu analysis'){
 			steps{
 				sh 'lscpu'
 			}
