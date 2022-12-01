@@ -18,7 +18,7 @@ pipeline{
 		}
 		stage('4-memoryCheck'){
 			steps{
-				sh 'free -m'
+				sh 'free -g'
 			}
 		}stage('5-securityCheck'){
             steps{
