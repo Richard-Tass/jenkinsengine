@@ -1,19 +1,29 @@
-node {
+pipeline{
+	agent any
 	stages{
 		stage('1-system update'){
-			'system apt update -y'
+			steps{
+				sh 'system apt update -y'
+			}
 		}
 		stage('2-disk free space'){
-			'df -h'
+			steps{
+				sh 'df -ef'
+			}
 		}
 		stage('3-real time Linux processes'){
-			'top'
-		}
-		stage('snapshot of running processes'){
-			'ps -ef'
+			steps{
+				sh 'top'
+			}
 		}
 		stage('cpu analysis'){
-			'lscpu'
+			steps{
+				sh 'lscpu'
+			}
 		}
+		
 	}
 }
+
+
+
