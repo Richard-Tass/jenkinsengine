@@ -3,12 +3,12 @@ pipeline{
 	stages{
 		stage('1-system update'){
 			steps{
-				sh 'system apt update -y'
+				sh 'uptime'
 			}
 		}
 		stage('2-disk free space'){
 			steps{
-				sh 'df -ef'
+				sh 'df -h'
 			}
 		}
 		stage('3-real time Linux processes'){
