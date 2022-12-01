@@ -18,7 +18,7 @@ pipeline{
 		}
 		stage('4-cpu analysis'){
 			steps{
-				sh 'lscpu'
+				sh 'ps -ef'
 			}
 		}
 		
