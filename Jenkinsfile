@@ -24,20 +24,20 @@ pipeline{
 				sh 'free -m'
 			}
 		}
-		stage('4-volumeCheck'){
+		stage('4-freeDiskspace'){
 			agent{
 				label 'slave4'
 			}
 			steps{
-				sh 'lsblk'
+				sh 'df -h'
 			}
 		}
-		stage('5-diskfreespace'){
+		stage('5-done'){
 			agent{
 				label 'slave1'
 			}
 			steps{
-				sh 'df -h'
+				sh 'echo "we are done"'
 			}
 		}
 	}
