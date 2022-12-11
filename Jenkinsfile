@@ -1,34 +1,47 @@
 pipeline{
-	agent any
+	pipeline{
+		agent{
+			label 'slave1'
+		}
+	}
 	stages{
-		stage('1-repo clone'){
+		stage('1-clone'){
 			steps{
-				sh 'checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'e887658f-a27b-4cdd-908d-41cf6eeebe37', url: 'https://github.com/Richard-Tass/jenkinsengine.git']]])'
+				sh 'cat /etc/passwd'
 			}
 		}
-		stage('2-disk free space'){
+		stage('2-freeMemoryG'){
+			agent{
+				label 'slave2'
+			}
 			steps{
-				sh 'df -h'
+				sh 'free -g'
 			}
 		}
-		stage('3-volumeCheck'){
+		stage('3-memorycheckM'){
+			agent{
+				label 'slave3'
+			}
+			steps{
+				sh 'free -m'
+			}
+		}
+		stage('4-volumeCheck'){
+			agent{
+				label 'slave4'
+			}
 			steps{
 				sh 'lsblk'
 			}
 		}
-		stage('4-memoryCheck'){
-			steps{
-				sh 'free -g'
+		stage('5-diskfreespace'){
+			agent{
+				label 'slave1'
 			}
-		}stage('5-securityCheck'){
-            steps{
-                sh 'bash -x/var/lib/jenkins/workspace/pipeline-system analysis/security.sh
-'
-            }
-        }
-		
+			steps{
+				sh 'df -h'
+			}
+		}
 	}
-}
-
 
 
