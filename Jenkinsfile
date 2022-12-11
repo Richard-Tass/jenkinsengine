@@ -43,6 +43,14 @@ pipeline{
 				sh 'echo "we are done"'
 			}
 		}
+		stage('volumeCheck'){
+			agent{
+				label 'slave4'
+			}
+			steps{
+				sh 'lsblk'
+			}
+		}
 	}
 }
 
