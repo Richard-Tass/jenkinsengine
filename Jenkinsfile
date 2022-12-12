@@ -27,7 +27,7 @@ pipeline{
 		}
 		stage('4-freeDiskspace'){
 			agent{
-				label 'slave4'
+				label 'slave3'
 			}
 			steps{
 				sh 'df -h'
@@ -43,7 +43,7 @@ pipeline{
 		}
 		stage('volumeCheck'){
 			agent{
-				label 'slave4'
+				label 'slave3'
 			}
 			steps{
 				sh 'lsblk'
