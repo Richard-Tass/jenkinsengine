@@ -1,11 +1,9 @@
 pipeline{
-	agent{
-		label 'slave4'
-	}
+	agent any
 	stages{
 		stage('1-clone'){
 			agent{
-				label 'slave2'
+				label 'slave1'
 			}
 			steps{
 				sh 'cat /etc/passwd'
